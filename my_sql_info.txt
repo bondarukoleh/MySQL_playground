@@ -1,0 +1,17 @@
+GENERIC
+
+Database - collection of data, structured set of computerizad data with an accessible interface.
+Database Management System, DMS, Related DMS - interface for Database.
+Your app <-> DMS <-> Database
+Related databases PostreSQL, Oracle Database, MySQL, SQLite - technicaly they are not Databases, they are DMS',
+and they ALL using SQL language for their queries (because they are related)
+
+MySQL vs SQL
+SQL "structured query language"
+SQL - is language, language that we're using to "talk" to our databases, every our "question" - is a query.
+So SQL is a standart that all DMS implement. So there a slight differences in implementation of SQL in 
+different DMS, but still they're using SQL.
+
+So when we talking to MySQL - we use SQL language, because as it was said MySQL is a DMS, difference between
+DMS' are the features that these DMS' offer, not the language that their using (since it not much different).
+Features like, how secure, how fast, how big is upload, permissions to work.
