@@ -1,0 +1,8 @@
+$>mysql start
+Run instatnce of mysql DMS.
+
+mysql$>exit; quit; \q; ctrl c;
+Quits from mysql command line interface.
+
+$>mysql stop
+Stops Mysql server.
