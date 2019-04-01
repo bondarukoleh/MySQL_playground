@@ -1,3 +1,6 @@
+In .bashrc, .bash_profile, .zshrc
+export PATH=${PATH}:/usr/local/mysql/bin
+
 $>mysql start
 Run instatnce of mysql DMS.
 
@@ -6,3 +9,13 @@ Quits from mysql command line interface.
 
 $>mysql stop
 Stops Mysql server.
+
+To go in 
+$>mysql -u root -p
+To set user
+mysql$>ALTER USER 'root'@'localhost' IDENTIFIED BY 'your_pasword'
+
+CREATE DATABASE your_name_db;
+DROP DATABASE your_name_db;
+USE your_name_db - tell that we want to talk with some space on server.
+SELECT database(); - see what db we are using right now.

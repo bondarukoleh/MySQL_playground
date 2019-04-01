@@ -15,3 +15,8 @@ different DMS, but still they're using SQL.
 So when we talking to MySQL - we use SQL language, because as it was said MySQL is a DMS, difference between
 DMS' are the features that these DMS' offer, not the language that their using (since it not much different).
 Features like, how secure, how fast, how big is upload, permissions to work.
+
+Mysql Server
+Server can contain a lot of databases, shop database (with users, payments, etc.), soup shop db (with users, payments, etc.).
+
+So when we crate a database, we creating space in mysql server wher we can add data.
