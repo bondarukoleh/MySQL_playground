@@ -52,5 +52,18 @@ VARCHAR - 'variation characters' length. from 1 to 255 characters.
 Each variable (int, or varchar) - still has set length. So that's why we need to check sometimes does the field
 contain 100 chars, and doesn't contain 101.
 
-Create table
-CREATE table_name (column_name1 data_type, column_name2 data_type)
+Table
+CREATE TABLE table_name (column_name1 data_type, column_name2 data_type);
+mysql$>create table users(name varchar(15), age int);
+
+SHOW COLUMNS FROM table_name; ( in this context simular to describe command - DESC table_name;)
+
+DROP TABLE table_name;
+
+INSERT DATA
+insert into table_name(column_name1, column_name2) values(value_for_column1, value_for_2);
+insert into table_name(column_name1, column_name2)
+ values(value1_for_column1, value1_for_2)
+        ,(value2_for_column1, value2_for_2); - we can set a few at once.
+
+strings inserted only inquotes ""|''. column names order matters.
