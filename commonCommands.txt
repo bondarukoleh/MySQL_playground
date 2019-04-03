@@ -71,5 +71,17 @@ strings inserted only inquotes ""|''. column names order matters.
 SQL WARNINNGS
 In previous versions of mysql if data is too long for example - it will be truncated - that's warning.
 But as I see now, in 8th version - that's an error.
-You can see SHOW ERRORS, or SHOW WARNING, to see the last messages (works not so properly
-)
+You can see SHOW ERRORS, or SHOW WARNING, to see the last messages (works not so properly)
+If there were two simular warnings in row - it won't show it. I dunno why.
+
+NULL value
+NULL in sql means - "Value is unknown" - doesn't mean zero!
+in desc table there is NULL column - if there is YES, then value or row can be NULL, means you can leave this 
+row value unset - with NULL. You can even "insert into table_name() values()" - and it will set NULL from values
+in whole row.
+To specify that value cannot be null - we can set NOT NULL into column data type when we crating table.
+mysql$>create table users(name varchar(15) not null, age int not null);
+And in NULL column you'll see NO value.
+If we try to leave some value unset in this table - we'll get warning and er'll have 0 as a default value in table
+for examlpe. Same thing with string, - default for it is empty string, not null.
+
