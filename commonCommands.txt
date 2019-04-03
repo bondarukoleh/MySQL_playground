@@ -67,3 +67,9 @@ insert into table_name(column_name1, column_name2)
         ,(value2_for_column1, value2_for_2); - we can set a few at once.
 
 strings inserted only inquotes ""|''. column names order matters.
+
+SQL WARNINNGS
+In previous versions of mysql if data is too long for example - it will be truncated - that's warning.
+But as I see now, in 8th version - that's an error.
+You can see SHOW ERRORS, or SHOW WARNING, to see the last messages (works not so properly
+)
