@@ -120,18 +120,22 @@ create table unic_cats(cat_id int not null, name varchar(15) not null default 'u
 will create table with unic identifier;
 
 desc unic_cats;
-+--------+-------------+------+-----+---------+-------+
-| Field  | Type        | Null | Key | Default | Extra |
-+--------+-------------+------+-----+---------+-------+
-| cat_id | int(11)     | NO   | PRI | NULL    |       |
-| name   | varchar(15) | NO   |     | unnamed |       |
-| age    | int(11)     | NO   |     | 0       |       |
-+--------+-------------+------+-----+---------+-------+
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| cat_id | int(11)     | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(15) | NO   |     | unnamed |                |
+| age    | int(11)     | NO   |     | 0       |                |
++--------+-------------+------+-----+---------+----------------+
 
 After that we cannot add "insert into unic_cats(name, age, cat_id) values('Blue', 5, 1);" twice.
 We will be forced to set unic identifier to cat_it.
 We can also set name, or age a primary key, to make it unic. 
 
 To not set cat_id each time manualy, we cat set AUTO_INCREMENT to it.
-create table unic_cats(cat_id int not null auto_increment, name varchar(15) not null default 'unnamed',
- age int not null default 0, primary key(cat_id));
+create table unic_cats(cat_id int not null auto_increment primary key, name varchar(15) not null default 'unnamed',
+ age int not null default 0);
+sic! primary key - not in the end like primary key(cat_id), but after cat_id in columns section of the query.
+
+CRUD
+create, read, upadte, delete
