@@ -145,10 +145,6 @@ read (desc, show, select),
 update (),
 delete (drop)
 
-DELETE
-drop table table_name;
-
-
 SELECT
 * - means give me all the collumns from table.
 
@@ -157,6 +153,7 @@ mysql$>select column_name1, column_name2 from table_name; - return only queried 
 
 where
 More specific selection. can be used with update, and delete.
+mysql$>select * from table_name where column_name1 condition1 and condition2;
 mysql$>select column_name1, column_name2 from table_name where column_name1 condition1 and condition2;
 
 mysql$>select age, name from unic_cats where age=4 and name = 'Egg'; (or 'egg/EGG') -> by default case not matter
@@ -174,3 +171,21 @@ mysql$>SELECT age AS years, name as 'cat name' FROM unic_cats; (to use space in 
 And you'll get 'years' and 'cat name' istead of age and name in column names.
 
 UPDATE
+Update some data in tables.
+UPDATE table_name SET column1='value1' where column2='value2'
+find all rows with 'value2' in column2, and update for them column1 values to 'value1'
+
+mysql$>update unic_cats set age=10 where cat_id=1;
+Be aware that in safe mode updating allowed only by KEY (primary, foreign), so you need to use it. 
+
+It's a good practice to first run SELECT rows that you want to update before fire the UPDATE query.
+
+DELETE
+drop table table_name;
+DELETE FROM table_name WHERE condition;
+DELETE FROM unic_cats WHERE name='Egg';
+
+Also it's nice to type SELECT instead of DELETE to see what you're going to delete.
+There is no undo button.
+
+delete from table_name; - will delete all data from table, be carefull.
