@@ -148,3 +148,29 @@ delete (drop)
 DELETE
 drop table table_name;
 
+
+SELECT
+* - means give me all the collumns from table.
+
+Select expression - more complex query.
+mysql$>select column_name1, column_name2 from table_name; - return only queried columns. Order of column is matter.
+
+where
+More specific selection. can be used with update, and delete.
+mysql$>select column_name1, column_name2 from table_name where column_name1 condition1 and condition2;
+
+mysql$>select age, name from unic_cats where age=4 and name = 'Egg'; (or 'egg/EGG') -> by default case not matter
+mysql$>select age, name from unic_cats where age=cat_id; (sql got that I want from unic_cats)
+
+alias
+Selecting data and renaming column names to their to be more readable to you.
+mysql$>SELECT age AS years, name as 'cat name' FROM unic_cats; (to use space in column name - use quotes '')
++-------+----------+
+| years | cat name |
++-------+----------+
+|     5 | Ringo    |
+|     4 | Jackson  |
++-------+----------+
+And you'll get 'years' and 'cat name' istead of age and name in column names.
+
+UPDATE
