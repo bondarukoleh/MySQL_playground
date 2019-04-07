@@ -1,0 +1,9 @@
+UPDATE
+Update some data in tables.
+UPDATE table_name SET column1='value1' where column2='value2'
+find all rows with 'value2' in column2, and update for them column1 values to 'value1'
+
+mysql$>update unic_cats set age=10 where cat_id=1;
+Be aware that in safe mode updating allowed only by KEY (primary, foreign), so you need to use it. 
+
+It's a good practice to first run SELECT rows that you want to update before fire the UPDATE query.

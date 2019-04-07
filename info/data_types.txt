@@ -1,0 +1,17 @@
+DATA TYPES
+Mixed types of data in collumn is not allowed in sql. Simply, memory column shouldn't have "1.85" and "two fifty"
+in rows, because if we want to fire some mathematical operation with these data, we'll fail on "two fifty".
+When you creating table - you set data type for each column.
+
+Numeric types:
+INT (common), SMALLINT, TINYINT, MEDIUMINT, BIGINT, DECIMAL, NUMERIC, FLOAT, DOUBLE, BIT.
+String types:
+CHAR, VARCHAR (common), BINARY, VARBINARY, BLOB, TEXT, ENUM, SET. 
+Date types:
+DATE, DATETIME, TIMESTAMP, TIME, YEAR
+
+INT - whole number, form -4294967295 to 4294967295
+VARCHAR - 'variation characters' length. from 1 to 255 characters.
+
+Each variable (int, or varchar) - still has set length. So that's why we need to check sometimes does the field
+contain 100 chars, and doesn't contain 101.

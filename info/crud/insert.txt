@@ -1,0 +1,9 @@
+INSERT DATA
+insert into table_name(column_name1, column_name2) values(value_for_column1, value_for_2);
+insert into table_name(column_name1, column_name2)
+ values(value1_for_column1, value1_for_2)
+        ,(value2_for_column1, value2_for_2); - we can set a few rows at once.
+
+If you typed a insert into a(c1, c2) values(1) - even if c2 column has default value - you'll get an error.
+
+strings inserted only inquotes ""|''. column names order matters.

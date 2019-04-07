@@ -1,0 +1,5 @@
+CRUD
+create (create table/database, insert into table_name() values(),()),
+read (desc, show, select),
+update (update, alter table_name modify/change column_name),
+delete (delete from, drop)
