@@ -191,3 +191,16 @@ There is no undo button.
 delete from table_name; - will delete all data from table, be carefull.
 
 STRING FUNCTIONS
+We can do a lot of stuff with values from db. Reverse strings, change names, change part of
+names, values.
+
+To help doing that, easily to run functions - we car run some sql code from file.
+For that just create file with .sql extention, i.e. myQuery.sql
+mysql$>source path_to_file/myQuery.sql - it will run every querie from this file.
+
+There are a lot of string functions in documentation.
+https://dev.mysql.com/doc/refman/8.0/en/string-functions.html
+
+Concat
+Combine pieces of data together.
+CONCAT(x, y, z)
