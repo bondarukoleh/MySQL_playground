@@ -31,3 +31,5 @@ select * from books;
 ALTER TABLE books CHANGE authir_name author_fname VARCHAR(100);
 
 SELECT concat(author_fname, ' ', author_lname) AS 'Full author name', released_year from books; 
+
+SELECT CONCAT(SUBSTRING(title, 1, 5), '...') AS 'Title' from books;

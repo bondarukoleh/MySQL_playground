@@ -201,7 +201,7 @@ mysql$>source path_to_file/myQuery.sql - it will run every querie from this file
 There are a lot of string functions in documentation.
 https://dev.mysql.com/doc/refman/8.0/en/string-functions.html
 
-Concat
+Concat()
 Combine pieces of data together.
 SELECT CONCAT(column_name1, 'my text', ' ', column_name2, 'another text') from table_name;
 SELECT concat(author_fname, ' ', author_lname) AS 'full name', released_year from books;
@@ -209,3 +209,27 @@ SELECT concat(author_fname, ' ', author_lname) AS 'full name', released_year fro
 We can specify as manyy columns and functions as we need.
 If we need some common separator for all concatinating values we can use concat_ws with separator.
 SELECT concat_ws('-', author_fname, author_lname) from books;
+
+Substring()
+SUBSTING() same as SUBSTR() - it's a shortcut.
+SELECT SUBSTING(column_name, start_index, end_index) as "needed_name";
+SELECT SUBSTING('value', 1, 3); - will print first 3 characters from 'value' - 'val'; In SQL indexes of 
+value begin with 1, not 0.
+SELECT SUBSTING('value', 2); - from 2nd index (include) to the end - 'alue'
+SELECT SUBSTING('value', -2); - till 2nd index (include) from end of string - 'ue'
+
+Combining - SELECT CONCAT(SUBSTRING(column_value, 1, 5), '...') AS 'needed_name' from table_name;
+
+Replace()
+SELECT REPLACE(column_name, 'value_to_replace', 'needed_replacement') from books;
+
+Reverse()
+SELECT REVERSE(column_name) from books;
+
+Char_length()
+CHAR_LENGTH(column_name) from books - will give you length of string.
+SELECT CONCAT(author_fname, ' is ', CHAR_LENGTH(author_fname), ' charachters long') FROM books;
+wil give you 'Neil is 4 charachters long'.
+
+UPPER()/LOWER() - you got it.
+UPPER/LOWER only takes one argument, be carefull.
