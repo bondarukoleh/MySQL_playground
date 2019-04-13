@@ -239,7 +239,7 @@ SELECT
   t1_column_name1, t1_column_name2, t1_column_name2,
 FROM
   table_name1
-JOIN
+JOIN (same as inner join)
   table_name2
 ON
   t5_column_name1=t7_column_name2
