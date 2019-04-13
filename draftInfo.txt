@@ -233,3 +233,15 @@ wil give you 'Neil is 4 charachters long'.
 
 UPPER()/LOWER() - you got it.
 UPPER/LOWER only takes one argument, be carefull.
+
+JOIN
+SELECT
+  t1_column_name1, t1_column_name2, t1_column_name2,
+FROM
+  table_name1
+JOIN
+  table_name2
+ON
+  t5_column_name1=t7_column_name2
+WHERE/ORDER BY
+  predicard_expression

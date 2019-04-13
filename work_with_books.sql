@@ -27,6 +27,20 @@ INSERT INTO books(title, author_fname, author_lname, released_year, stock_quanti
 ('Consider the Lobster', 'David', 'Foster Wallace', 2005, 92, 343);
 
 select * from books;
+SHOW tables;
+SELECT * from unic_cats;
+select name, age from unic_cats ORDER BY age asc;
+select name, age, author_fname from unic_cats, books where unic_cats.cat_id=books.book_id;
+
+select 
+  unic_cats.name, age, books.author_fname
+from
+ unic_cats
+inner JOIN
+ books
+on
+unic_cats.cat_id=books.book_id
+order by age asc; -- or where age<=5;
 
 ALTER TABLE books CHANGE authir_name author_fname VARCHAR(100);
 
