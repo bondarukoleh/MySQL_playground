@@ -12,6 +12,9 @@ SQL - is language, language that we're using to "talk" to our databases, every o
 So SQL is a standart that all DMS implement. So there a slight differences in implementation of SQL in 
 different DMS, but still they're using SQL.
 
+SQL is the standard language for Relational Database System. All the Relational Database Management Systems (RDMS)
+like MySQL, MS Access, Oracle, Sybase, Informix, Postgres and SQL Server use SQL as their standard database language.
+
 So when we talking to MySQL - we use SQL language, because as it was said MySQL is a DMS, difference between
 DMS' are the features that these DMS' offer, not the language that their using (since it not much different).
 Features like, how secure, how fast, how big is upload, permissions to work.

@@ -235,6 +235,13 @@ UPPER()/LOWER() - you got it.
 UPPER/LOWER only takes one argument, be carefull.
 
 JOIN
+So we join tables on some condition, 
+INNER - (as simple JOIN) returns only rows for those when condition is met.
+LEFT - return all rows from left side of JOIN word table, rows from right table - only that met condition,
+when condition isn't met - nulls in cells.
+RIGHT - opposite to left.
+FULL - returns all rows from two tables.
+
 SELECT
   t1_column_name1, t1_column_name2, t1_column_name2,
 FROM
