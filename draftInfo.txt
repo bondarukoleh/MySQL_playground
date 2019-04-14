@@ -139,6 +139,11 @@ create table unic_cats(cat_id int not null auto_increment primary key, name varc
  age int not null default 0);
 sic! primary key - not in the end like primary key(cat_id), but after cat_id in columns section of the query.
 
+Primary key uniquely identify a record in the table.
+Foreign key is a field in the table that is primary key in another table.
+We can have only one Primary key in a table.
+We can have more than one foreign key in a table.
+
 CRUD
 create (create table table_name(), insert into table_name() values(), ()),
 read (desc, show, select),

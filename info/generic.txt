@@ -21,5 +21,25 @@ Features like, how secure, how fast, how big is upload, permissions to work.
 
 Mysql Server
 Server can contain a lot of databases, shop database (with users, payments, etc.), soup shop db (with users, payments, etc.).
+So when we crate a database, we creating space in mysql server where we can add data.
+Defaul port is 3306
 
-So when we crate a database, we creating space in mysql server wher we can add data.
+
+
+SQL vs NoSQL
+SQL (PostgreSQL, MS SQL, Oracle)
+DMS' - structured dbs, with strict order and data types, relational dbs, where everything divided into tables connected to each other. 
+SQL has few principles: 
+ACID (Atomicity, Consistency, Isolation, Durability — атомарность, непротиворечивость, изолированность, долговечность)
+
+NoSQL (MongoDB, CouchDB, Cassandra, HBase)
+No-relational db, on the other hand more agile and extendable, with different type of data that they store, NoSQL dbs has no restriction
+about the type of stored data.
+In front of relational dbs, nosql - can add new data types while working, and cloud storage and computing power of cloud, 
+So cloud storage can be used by few servers simultaniously.
+Much more easy to use that relational, doesn't need to be setuped so long.
+
+So db selection depends on aim amd condition of project.
+If we have stable, clear requirements, we need checked mature technology, and data consistency, solidness - SQL
+No clear requiraments, speed of development, aim of project will be chosen while development is on - nosql.
+
