@@ -43,3 +43,4 @@ So db selection depends on aim amd condition of project.
 If we have stable, clear requirements, we need checked mature technology, and data consistency, solidness - SQL
 No clear requiraments, speed of development, aim of project will be chosen while development is on - nosql.
 
+Npm modules - knex, mysql.
