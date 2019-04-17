@@ -277,3 +277,11 @@ CREATE TABLE product ( --doing as it says
 
 CREATE INDEX column_name ON table(column_name);
 In simpliest cases we create index for columns that appear in WHERE, ORDER BY, ON condition.
+
+-- Double join, when we need to select one value joined from 1 table and bind it with 2nd and 3rd
+Select pc.speed, makers.maker_name
+from 
+pc 
+join 
+product on pc.model=product.model 
+join makers on product.maker_id = makers.maker_id where pc.hd > 10;
