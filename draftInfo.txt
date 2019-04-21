@@ -22,7 +22,7 @@ SELECT database(); - see what db we are using right now.
 
 TABLES
 Relational database - is just a bunch of tables.
-Tables hold the data. A collection of related data held in a struvctured format within a database.
+Tables hold the data. A collection of related data held in a structured format within a database.
 
 Collums (headers)
         /       \
@@ -147,7 +147,7 @@ We can have more than one foreign key in a table.
 CRUD
 create (create table table_name(), insert into table_name() values(), ()),
 read (desc, show, select),
-update (),
+update (update table_name set column=value where condition),
 delete (drop)
 
 SELECT
@@ -211,7 +211,7 @@ Combine pieces of data together.
 SELECT CONCAT(column_name1, 'my text', ' ', column_name2, 'another text') from table_name;
 SELECT concat(author_fname, ' ', author_lname) AS 'full name', released_year from books;
 
-We can specify as manyy columns and functions as we need.
+We can specify as many columns and functions as we need.
 If we need some common separator for all concatinating values we can use concat_ws with separator.
 SELECT concat_ws('-', author_fname, author_lname) from books;
 
