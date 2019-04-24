@@ -285,3 +285,16 @@ pc
 join 
 product on pc.model=product.model 
 join makers on product.maker_id = makers.maker_id where pc.hd > 10;
+
+DISTINCT
+Unic data from table
+SELECT DISTINCT column_name FROM table_name;
+If thurname for example equal but name is different, and we need distinct authors
+Select distinct author_lname, author_fname from books;
+Select distinct concat(author_lname, ' ', author_fname) from books; - concatiname name is one solution.
+
+ORDER BY
+SELECT column_name FROM table_name ORDER BY column_name DESC;
+Short cut SELECT column_name1, column_name2 FROM table_name ORDER BY 2; (2 - refers to column_name2)
+select distinct released_year, author_lname, title from books order by released_year, title; - so when we have two 
+  equal relesed_year - we will sort by title.
