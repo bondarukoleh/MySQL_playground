@@ -298,3 +298,16 @@ SELECT column_name FROM table_name ORDER BY column_name DESC;
 Short cut SELECT column_name1, column_name2 FROM table_name ORDER BY 2; (2 - refers to column_name2)
 select distinct released_year, author_lname, title from books order by released_year, title; - so when we have two 
   equal relesed_year - we will sort by title.
+
+LIMIT
+How many results we want to see.
+Select column_name from table LIMIT 3; -> shows first 3 rows.
+select title, author_fname, released_year from books order by 3 desc limit 3; -> common to use limit with order by.
+limit 2,5 -> means from third row and 5 rows further, so 2 - is from what row, 5 - how much you want to see.
+
+LIKE
+In front of WHERE without LIKE, LIKE is softer selection, means "contains" such condition, not "equal" to.
+Select * from table where column_value like '%some inner word%'; -> 'Starts with%', '%ends with', % - wild card,
+means everything (*), or like '____' -> '_' wildcard means one character (?), escape '\' is used if name is concatinating
+wildcard characters.
+Select * from table where column_value like 'Start___10\% name\_ ends with%';
