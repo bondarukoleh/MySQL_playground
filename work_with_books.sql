@@ -47,3 +47,47 @@ ALTER TABLE books CHANGE authir_name author_fname VARCHAR(100);
 SELECT concat(author_fname, ' ', author_lname) AS 'Full author name', released_year from books; 
 
 SELECT CONCAT(SUBSTRING(title, 1, 5), '...') AS 'Title' from books;
+
+SELECT * FROM  books;
+SELECT 
+    CONCAT_WS(' ', title, author_fname, author_lname) AS 'book and author',
+    released_year
+FROM
+    books;
+SELECT SUBSTRING('MY Stuff', 1, 4);
+SELECT SUBSTRING('MY Stuff', 1);
+SELECT SUBSTRING('MY Stuff', -2);
+SELECT REVERSE(REPLACE(CONCAT(SUBSTRING(title, 1, 5), '...'), '...', 'AUAUAUAUAU')) AS 'Title' from books;
+SELECT CHAR_LENGTH(REVERSE(REPLACE(CONCAT(SUBSTRING(title, 1, 5), '...'), '...', 'AUAUAUAUAU'))) AS 'Title' from books;
+
+SELECT CONCAT(author_fname, ' is ', CHAR_LENGTH(author_fname), ' charachters long') FROM books;
+    
+    
+    
+SELECT @@sql_mode;
+SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY,','');
+SET @@sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY,',''));
+
+Select LOWER(author_fname) from books;
+Select distinct author_lname from books;
+Select distinct concat(author_lname, ' ', author_fname) from books;
+Select distinct author_lname, author_fname from books;
+select author_lname from books;
+select distinct released_year, author_lname, title from books order by released_year, title;
+select distinct released_year, author_lname, title from books order by title;
+select author_fname from books order by 1 desc;
+select title, author_fname, released_year from books order by 3 desc limit 3,10000000;
+select title from books where title like '%\%%' or '%\_%';
+select title from books where title like '%\_%';
+
+select title from books order by CHAR_LENGTH(title) desc limit 1;
+select distinct author_lname from books where author_lname like '% %';
+select stock_quantity from books order by 1 limit 1,2;
+select count(distinct author_lname, author_fname) from books;
+select count(title) from books where title like '%The%';
+select title, author_lname from books limit 5;
+SELECT title, author_lname FROM books GROUP BY author_lname LIMIT 5;
+select count(title) as 'Number of books', author_lname FROM books GROUP BY author_lname;
+select count(title) from books where author_lname='Gaiman' or author_lname='Eggers';
+select author_lname, author_fname,released_year, count(title) as 'Books were released' FROM books GROUP BY 3 order by 4 desc;
+select CONCAT('In ', released_year,' ',count(*),' - book(s) were released') as 'Book releases' FROM books GROUP BY released_year order by count(title) desc;

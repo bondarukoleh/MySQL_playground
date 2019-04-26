@@ -235,6 +235,8 @@ Char_length()
 CHAR_LENGTH(column_name) from books - will give you length of string.
 SELECT CONCAT(author_fname, ' is ', CHAR_LENGTH(author_fname), ' charachters long') FROM books;
 wil give you 'Neil is 4 charachters long'.
+SELECT title AS 'Title', CONCAT(author_fname, ' ', author_lname) AS 'Author' FROM 
+books ORDER BY CHAR_LENGTH(title) DESC LIMIT 1; -> select book with longiest title.
 
 UPPER()/LOWER() - you got it.
 UPPER/LOWER only takes one argument, be carefull.
@@ -348,4 +350,49 @@ Since we have grouped rows - we can count some info from them
 select author_lname, author_fname, count(titles) as 'Books has written' FROM books GROUP BY 1, 2; -> how many books
  is written by author.
 
+select author_lname, author_fname,released_year, count(title) as 'Books were released'
+FROM books GROUP BY 3 order by 4 desc; -> how many books where released by year.
 
+MIN and MAX.
+Find minimun and maximum value
+Select MIN(column_name) from table;
+
+If we want to see more data, select min(column_name1), column_name2 - won't work, it will count only first column.
+A few ways:
+1. SELECT pages, title FROM books WHERE pages = (SELECT MAX(pages) FROM books); -> inner select. Inner select will return
+some value, for example 1000. But we don't know that yet, right. So we could first - find max pages from table, and 
+then select pages, title from books where pages=to found max. But we done this in one row, via inner select.
+But inner query is kind slow one.
+2. SELECT pages, title FROM books order by 1 desc limit 1; -> easy katka.
+
+SELECT MIN(released_year), author_lname, author_fname, COUNT(title) FROM books GROUP BY 2, 3; -> we shown the year when
+first book where released.
+
+SUM
+sums together data.
+SELECT SUM(pages) as 'Pages sum', author_lname, author_fname, COUNT(title) as 'Books count'
+ FROM books GROUP BY 2, 3 order by 1 (witch means SUM(pages)) desc; -> 
++-----------+----------------+--------------+-------------+
+| Pages sum | author_lname   | author_fname | Books count |
++-----------+----------------+--------------+-------------+
+|      1293 | Eggers         | Dave         |           3 |
+|       977 | Gaiman         | Neil         |           3 |
+|       672 | Foster Wallace | David        |           2 |
+|       634 | Chabon         | Michael      |           1 |
++-----------+----------------+--------------+-------------+
+Counts sum of pages from all books grouped by author, notice that it ordered by sum of pages.
+
+AVG
+Average - (среднее значение). Sums data and divide it on it count.
+ SELECT AVG(pages) as 'Book pages average', author_lname from books group by 2, author_fname order by 1 desc;
++--------------------+----------------+
+| Book pages average | author_lname   |
++--------------------+----------------+
+|           634.0000 | Chabon         |
+|           431.0000 | Eggers         |
+|           367.0000 | Saunders       |
+|           325.6667 | Gaiman         |
+|           244.5000 | Lahiri         |
+|           181.0000 | Steinbeck      |
++--------------------+----------------+
+As you can see avg returns value with .0000 4 decimals after dot.

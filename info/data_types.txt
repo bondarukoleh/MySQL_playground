@@ -15,3 +15,12 @@ VARCHAR - 'variation characters' length. from 1 to 255 characters.
 
 Each variable (int, or varchar) - still has set length. So that's why we need to check sometimes does the field
 contain 100 chars, and doesn't contain 101.
+
+CHAR vs VARCHAR 
+CHAR - has fixed length. So when CHAR(10) - that means if you insert 4 length string - mysql will add 6 spaces to this
+value because CHAR has fixed length, if you add 11 length string - 1 character will be an error, or it will be chopped off.
+When you are selecting that data back, spaces added by sql - removed. Char - mostly for short things, it's faster, like
+sex, state, Yes/No flags.
+
+VARCHAR - length is not fixed, means value stored exacly the same as you inserted, and uses less memory, since it doesn't
+includes extra spaces. VARCHAR is slowier.
