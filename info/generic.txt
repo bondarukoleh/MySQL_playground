@@ -44,3 +44,7 @@ If we have stable, clear requirements, we need checked mature technology, and da
 No clear requiraments, speed of development, aim of project will be chosen while development is on - nosql.
 
 Npm modules - knex, mysql.
+
+Turn off ONLY_FULL_GROUP_BY
+SELECT @@sql_mode;
+SET @@sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY,',''));

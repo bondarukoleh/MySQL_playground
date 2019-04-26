@@ -311,3 +311,41 @@ Select * from table where column_value like '%some inner word%'; -> 'Starts with
 means everything (*), or like '____' -> '_' wildcard means one character (?), escape '\' is used if name is concatinating
 wildcard characters.
 Select * from table where column_value like 'Start___10\% name\_ ends with%';
+
+Agregate functions.
+COUNT
+SELECT COUNT(*) FROM books; -> means count every row.
+select count(distinct author_lname, author_fname) from books; -> count all authors from books.
+select count(title) from books where title like '%The%';
+
+GROUP BY
+Summarizes or aggregates identical data into single rows.
+select title, author_lname from books group by author_lname; -> when group by finds similar author_lname it groups it 
+in one row.
+SELECT title, author_lname FROM books;
++----------------------------------+--------------+
+| title                            | author_lname |
++----------------------------------+--------------+
+| The Namesake                     | Lahiri       |
+| Norse Mythology                  | Gaiman       |
+| American Gods                    | Gaiman       |
+| Interpreter of Maladies          | Lahiri       |
+| A Hologram for the King: A Novel | Eggers       |
++----------------------------------+--------------+
+As we can see Lahiri and Gaiman - have two rows
+
+SELECT title, author_lname FROM books GROUP BY 2;
++----------------------------------+--------------+
+| title                            | author_lname |
++----------------------------------+--------------+
+| The Namesake                     | Lahiri       |
+| Norse Mythology                  | Gaiman       |
+| A Hologram for the King: A Novel | Eggers       |
++----------------------------------+--------------+
+So here we see 3 row, but under the hood - first two is double row, grouped by author_lname.
+Since we have grouped rows - we can count some info from them
+
+select author_lname, author_fname, count(titles) as 'Books has written' FROM books GROUP BY 1, 2; -> how many books
+ is written by author.
+
+
