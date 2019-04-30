@@ -60,4 +60,60 @@ We can use them for comparising.
 
 DATE FORMATTING
 There a lot of functions connected to wark with dates.
-e.g. for pretty layout of time we have DATE(), DAY(), HOUR() - to get needed values.
+e.g. for pretty layout of time we have DATE(), DAY(), HOUR(), DAYNAME(), DAYOFWEEK(), DAYOFYEAR() - to get needed values.
+select name, DAY(date_column), DAYNAME(date_column), date_column from cats order by date_column desc;
++-----------------+------------------+----------------------+-------------+
+| name            | DAY(date_column) | dayname(date_column) | date_column |
++-----------------+------------------+----------------------+-------------+
+| Time cat3       |               30 | Tuesday              | 2019-04-30  |
+| Time cat2       |                8 | Friday               | 1991-03-08  |
+| Time cat        |                1 | Saturday             | 1990-12-01  |
++-----------------+------------------+----------------------+-------------+
+For formating - DATE_FORMAT(date, format(specifiers))
+  there a lot of specifiers (%W/w - weekday name/number, %M/m - mounth name/number, %H/h - hours, etc.)
+
+SELECT name, DATE_FORMAT(dateTime_column, '%W %M and year is - %Y') AS 'Date info' FROM cats ORDER BY date_column DESC;
++-----------------+--------------------------------------+
+| name            | Date info                            |
++-----------------+--------------------------------------+
+| Time cat3       | Tuesday April and year is - 2019     |
+| Time cat2       | Friday March and year is - 1991      |
+| Time cat        | Saturday December and year is - 1990 |
++-----------------+--------------------------------------+
+Simplier select, with formating, so it's like a template for strings.
+SELECT name, DATE_FORMAT(dateTime_column, '%w/%m/%Y') AS 'Date info' FROM cats ORDER BY date_column DESC;
++-----------------+-----------+
+| name            | Date info |
++-----------------+-----------+
+| Time cat3       | 2/04/2019 |
+| Time cat2       | 5/03/1991 |
+| Time cat        | 6/12/1990 |
++-----------------+-----------+
+
+Calculations DATE
+
+DATEDIFF(value_to_subtract_from, substract_value) -  returns a amount of dates, parameter1 - parameter2 = result;
+SELECT name, FLOOR(DATEDIFF(NOW(), dateTime_column) / 365) as 'Age' FROM cats ORDER BY date_column DESC;
+Show the difference in days between dates divided on 365, and floor it to value.
+
+DATE_ADD(date, INTERVAL value_to_add type_of_date) -> adding anything we want to this date.
+SELECT DATE_ADD('2018-05-01', INTERVAL 1 DAY); -> '2018-05-02'
+SELECT DATE_SUB('2018-05-01', INTERVAL 1 YEAR); -> '2017-05-01'
+SELECT DATE_ADD('2020-12-31 23:59:59', INTERVAL 1 SECOND); -> '2021-01-01 00:00:00'
+type_of_date - we can find in documentation.
+
++/- shortcuts for DATE_ADD and DATE_SUB
+SELECT '2018-05-03' + INTERVAL 1 DAY; -> '2018-05-04'
+SELECT '2018-05-03' - INTERVAL 1 DAY; -> '2018-05-02'
+
+TIMESTAMPS
+Sort of metadata that stores when something were created or updated in database.
+TIMESTAMS same as DATETIME - their both stored 'YYYY-MM-DD HH:MM:SS' but differences are
+DATETIME range started from 1000 years to 9999 year, TUMESTAMP from 1970-01-01 - 2038-01-19.
+So TIMESTAMP is good when you want to track creation/update of things, and DATETIME - if you want to store date info.
+Also DATETIME needs more space to store values.
+
+ALTER table cats add column created_at timestamp default now();
+ALTER table cats add column changed_at timestamp default now() on update current_timestamp;
+Make created and changed columns in table. 
+
