@@ -24,3 +24,40 @@ sex, state, Yes/No flags.
 
 VARCHAR - length is not fixed, means value stored exacly the same as you inserted, and uses less memory, since it doesn't
 includes extra spaces. VARCHAR is slowier.
+
+INT - whole numbers, even.
+
+DECIMAL
+When we crating a table we can set data type of column with DECIMAL(5, 2)
+5 - is for number of digits that we can store in row, in this case 123.45, and 2 - stands for number
+  of digits after coma. If we pass even value - it will add 00 in the end, we cannot pass a 4 length 
+  even value, 1234 -> it cannot add 00 to the end. So if (5, 2) - means only 3 length even value can be stored.
+  OR with some configuration - if you pass some bigger value that allowed - it will add maximum for this row,
+  999.99 for example, or round it.
+  Difference between DECIMAL and FLOAT/DOUBLE - DECIMAL is fixed-point type and calculations are exact.
+  FLOAT/DOUBLE - are float-point type and calculations are approximate. So DECIMAL like CHAR - fixed, FLOAT/DOUBLE are
+  like VARCHAR - more flexible.
+
+FLOAT/DOUBLE - store numbers using less space but it coast lost of precision (точность). So difference between FLOAT
+  and DOUBLE is precision. FLOAT has precision issues after ~7 digits, DOUBLE after ~15, FLOAT needed 4 bytes for store
+  data, DOUBLE needed 8.
+
+DATE - Stores a date without time 'YYYY-MM-DD'
+
+TIME - Stores a time without date 'HH:MM:SS'
+
+DATETIME - Stores a date and time without date 'YYYY-MM-DD HH:MM:SS'
+
+There is a functions CURDATE(), CURTIME(), NOW(). NOW - for DATETIME type.
+So instead of 
+INSERT INTO cats(name, date_column, time_column, dateTime_column)
+ VALUES('Time cat', '1990-12-01', '12:15:45', '1990-12-01 12:15:45');
+We can:
+INSERT INTO cats(name, date_column, time_column, dateTime_column)
+ VALUES('Time cat2', CURDATE(), CURTIME(), NOW());
+
+We can use them for comparising. 
+
+DATE FORMATTING
+There a lot of functions connected to wark with dates.
+e.g. for pretty layout of time we have DATE(), DAY(), HOUR() - to get needed values.
