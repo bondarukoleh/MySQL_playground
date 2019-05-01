@@ -235,6 +235,8 @@ Char_length()
 CHAR_LENGTH(column_name) from books - will give you length of string.
 SELECT CONCAT(author_fname, ' is ', CHAR_LENGTH(author_fname), ' charachters long') FROM books;
 wil give you 'Neil is 4 charachters long'.
+SELECT title AS 'Title', CONCAT(author_fname, ' ', author_lname) AS 'Author' FROM 
+books ORDER BY CHAR_LENGTH(title) DESC LIMIT 1; -> select book with longiest title.
 
 UPPER()/LOWER() - you got it.
 UPPER/LOWER only takes one argument, be carefull.
@@ -285,3 +287,112 @@ pc
 join 
 product on pc.model=product.model 
 join makers on product.maker_id = makers.maker_id where pc.hd > 10;
+
+DISTINCT
+Unic data from table
+SELECT DISTINCT column_name FROM table_name;
+If thurname for example equal but name is different, and we need distinct authors
+Select distinct author_lname, author_fname from books;
+Select distinct concat(author_lname, ' ', author_fname) from books; - concatiname name is one solution.
+
+ORDER BY
+SELECT column_name FROM table_name ORDER BY column_name DESC;
+Short cut SELECT column_name1, column_name2 FROM table_name ORDER BY 2; (2 - refers to column_name2)
+select distinct released_year, author_lname, title from books order by released_year, title; - so when we have two 
+  equal relesed_year - we will sort by title.
+
+LIMIT
+How many results we want to see.
+Select column_name from table LIMIT 3; -> shows first 3 rows.
+select title, author_fname, released_year from books order by 3 desc limit 3; -> common to use limit with order by.
+limit 2,5 -> means from third row and 5 rows further, so 2 - is from what row, 5 - how much you want to see.
+
+LIKE
+In front of WHERE without LIKE, LIKE is softer selection, means "contains" such condition, not "equal" to.
+Select * from table where column_value like '%some inner word%'; -> 'Starts with%', '%ends with', % - wild card,
+means everything (*), or like '____' -> '_' wildcard means one character (?), escape '\' is used if name is concatinating
+wildcard characters.
+Select * from table where column_value like 'Start___10\% name\_ ends with%';
+
+Agregate functions.
+COUNT
+SELECT COUNT(*) FROM books; -> means count every row.
+select count(distinct author_lname, author_fname) from books; -> count all authors from books.
+select count(title) from books where title like '%The%';
+
+GROUP BY
+Summarizes or aggregates identical data into single rows.
+select title, author_lname from books group by author_lname; -> when group by finds similar author_lname it groups it 
+in one row.
+SELECT title, author_lname FROM books;
++----------------------------------+--------------+
+| title                            | author_lname |
++----------------------------------+--------------+
+| The Namesake                     | Lahiri       |
+| Norse Mythology                  | Gaiman       |
+| American Gods                    | Gaiman       |
+| Interpreter of Maladies          | Lahiri       |
+| A Hologram for the King: A Novel | Eggers       |
++----------------------------------+--------------+
+As we can see Lahiri and Gaiman - have two rows
+
+SELECT title, author_lname FROM books GROUP BY 2;
++----------------------------------+--------------+
+| title                            | author_lname |
++----------------------------------+--------------+
+| The Namesake                     | Lahiri       |
+| Norse Mythology                  | Gaiman       |
+| A Hologram for the King: A Novel | Eggers       |
++----------------------------------+--------------+
+So here we see 3 row, but under the hood - first two is double row, grouped by author_lname.
+Since we have grouped rows - we can count some info from them
+
+select author_lname, author_fname, count(titles) as 'Books has written' FROM books GROUP BY 1, 2; -> how many books
+ is written by author.
+
+select author_lname, author_fname,released_year, count(title) as 'Books were released'
+FROM books GROUP BY 3 order by 4 desc; -> how many books where released by year.
+
+MIN and MAX.
+Find minimun and maximum value
+Select MIN(column_name) from table;
+
+If we want to see more data, select min(column_name1), column_name2 - won't work, it will count only first column.
+A few ways:
+1. SELECT pages, title FROM books WHERE pages = (SELECT MAX(pages) FROM books); -> inner select. Inner select will return
+some value, for example 1000. But we don't know that yet, right. So we could first - find max pages from table, and 
+then select pages, title from books where pages=to found max. But we done this in one row, via inner select.
+But inner query is kind slow one.
+2. SELECT pages, title FROM books order by 1 desc limit 1; -> easy katka.
+
+SELECT MIN(released_year), author_lname, author_fname, COUNT(title) FROM books GROUP BY 2, 3; -> we shown the year when
+first book where released.
+
+SUM
+sums together data.
+SELECT SUM(pages) as 'Pages sum', author_lname, author_fname, COUNT(title) as 'Books count'
+ FROM books GROUP BY 2, 3 order by 1 (witch means SUM(pages)) desc; -> 
++-----------+----------------+--------------+-------------+
+| Pages sum | author_lname   | author_fname | Books count |
++-----------+----------------+--------------+-------------+
+|      1293 | Eggers         | Dave         |           3 |
+|       977 | Gaiman         | Neil         |           3 |
+|       672 | Foster Wallace | David        |           2 |
+|       634 | Chabon         | Michael      |           1 |
++-----------+----------------+--------------+-------------+
+Counts sum of pages from all books grouped by author, notice that it ordered by sum of pages.
+
+AVG
+Average - (среднее значение). Sums data and divide it on it count.
+ SELECT AVG(pages) as 'Book pages average', author_lname from books group by 2, author_fname order by 1 desc;
++--------------------+----------------+
+| Book pages average | author_lname   |
++--------------------+----------------+
+|           634.0000 | Chabon         |
+|           431.0000 | Eggers         |
+|           367.0000 | Saunders       |
+|           325.6667 | Gaiman         |
+|           244.5000 | Lahiri         |
+|           181.0000 | Steinbeck      |
++--------------------+----------------+
+As you can see avg returns value with .0000 4 decimals after dot.

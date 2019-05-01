@@ -34,6 +34,7 @@ VALUE ('polo shirt', 'purple', 'M', 50);
 desc shirts;
 
 ALTER TABLE shirts MODIFY shirt_size VARCHAR(3);
+ALTER TABLE shirts ADD some_column VARCHAR(3);
 
 SELECT article, color, shirt_size, last_worn FROM shirts WHERE shirt_size='M';
 SELECT * FROM shirts WHERE shirt_size='L';
