@@ -90,6 +90,14 @@ SELECT name, DATE_FORMAT(dateTime_column, '%w/%m/%Y') AS 'Date info' FROM cats O
 | Time cat        | 6/12/1990 |
 +-----------------+-----------+
 
+select DATE_FORMAT(NOW(), 'Time - %r, Day of week - %W, Day of mounth - %D, Mounth - %M, Year - %Y');
+'Time - 07:22:49 AM, Day of week - Wednesday, Day of mounth - 1st, Mounth - May, Year - 2019'
++----------------------------------------------------------------------------------------------+
+| Date info                                                                                    |
++----------------------------------------------------------------------------------------------+
+| Time - 07:22:49 AM, Day of week - Wednesday, Day of mounth - 1st, Mounth - May, Year - 2019  |
++----------------------------------------------------------------------------------------------+
+
 Calculations DATE
 
 DATEDIFF(value_to_subtract_from, substract_value) -  returns a amount of dates, parameter1 - parameter2 = result;
@@ -116,4 +124,5 @@ Also DATETIME needs more space to store values.
 ALTER table cats add column created_at timestamp default now();
 ALTER table cats add column changed_at timestamp default now() on update current_timestamp;
 Make created and changed columns in table. 
+current_timestamp = now(), just another shortcut.
 
