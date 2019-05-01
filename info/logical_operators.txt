@@ -1,0 +1,41 @@
+NOT EQUAL (!=)
+select column_name from table_name where column_name != 'value';
+
+NOT LIKE
+select column_name from table_name where column_name not like '%value%';
+
+GREATER THAN (>)
+select column_name from table_name where column_name > 'value';
+
+GREATER THAN OR EQUAL TO (>=)
+select column_name from table_name where column_name > 'value';
+
+NOTE: if we'll try to select 2 > 1 -> it will return boolen value soersed to number, it return 1.
+  BUT 'a' < 'b' -> 1(true) 'a' is less that 'b', 'a' = 'A' -> 1(true), so they are equal, not greater or less.
+  So 'value' is case insencitive, we can SELECT c FROM t WHERE c='VALUE'/'VaLuE' -> same result,
+  because characters are equal.
+  -10 < -2 -> true, since -2 is nearer to positive digits that -10.
+
+LESS THAN (<)
+select column_name from table_name where column_name < 'value';
+
+GREATER THAN OR EQUAL TO (<=)
+select column_name from table_name where column_name <= 'value';
+
+LOGICAL END(AND, &&)
+select column_name from table_name where column_name = 'value' && column_name2 <= 'value2';
+
+LOGICAL OR(OR, ||)
+select column_name from table_name where column_name = 'value' || column_name2 <= 'value2';
+
+BETWEEN
+Shortcut for logical and operator
+select column_name from table_name where column_name BETWEEN 'value' AND (not &&) 'value2';
+
+NOT BETWEEN
+select column_name from table_name where column_name NOT BETWEEN 'value' AND (not &&) 'value2';
+
+NOTE about date comparising:
+We can CAST() everything to needed type.
+SELECT CAST('value_to_cast' AS TYPE_OF_DATA)
+SELECT CAST(relesed_date AS DATE) from books
