@@ -39,3 +39,7 @@ NOTE about date comparising:
 We can CAST() everything to needed type.
 SELECT CAST('value_to_cast' AS TYPE_OF_DATA)
 SELECT CAST(relesed_date AS DATE) from books
+
+IN
+If we have many conditions - then instead of where column_name=1 OR column_name=2 OR column_name=3 we can
+SELECT * FROM table_name WHERE column_name IN (1, 2, 3)
