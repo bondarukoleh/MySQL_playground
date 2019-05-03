@@ -43,3 +43,24 @@ SELECT CAST(relesed_date AS DATE) from books
 IN
 If we have many conditions - then instead of where column_name=1 OR column_name=2 OR column_name=3 we can
 SELECT * FROM table_name WHERE column_name IN (1, 2, 3)
+
+NOT IN
+SELECT * FROM table_name WHERE column_name NOT IN (1, 2, 3)
+
+CASE steatements.
+We can deside what to do with date.
+SELECT title, released_year,
+  CASE
+    WHEN released_year >= 2000 THEN 'Modern'
+    WHEN released_year < 2000 AND released_year < 1950 THEN 'Middle'
+    ELSE 'Ancient'
+  END AS 'Time'
+FROM books;
+
+SELECT title, stock_quantity,
+    CASE 
+        WHEN stock_quantity <= 50 THEN '*'
+        WHEN stock_quantity <= 100 THEN '**'
+        ELSE '***'
+    END AS STOCK
+FROM books; 

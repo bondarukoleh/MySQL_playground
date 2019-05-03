@@ -396,3 +396,6 @@ Average - (среднее значение). Sums data and divide it on it count
 |           181.0000 | Steinbeck      |
 +--------------------+----------------+
 As you can see avg returns value with .0000 4 decimals after dot.
+
+% - same as in js.
+select title, released_year from books where released_year % 2 = 0; -> select all books with odd release year.
