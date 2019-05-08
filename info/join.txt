@@ -44,4 +44,8 @@ If we want to delete customer that has orders referenced -> we need to add to FO
 create table table_name(
   column_name_fk INT NOT NULL AUTO_INCREMENT,
   FOREIGN KEY(column_name_fk) REFERENCES table_name2(column_name2) ON DELETE CASCADE
-) -> this will make to delete rows in table_name when somebody will delete rows connected to column_name_fk from table_name2.
+) -> this will make to delete rows in table_name when somebody will delete rows connected to column_name_fk 
+  from table_name2.
+
+MANY TO MANY
+So you got it, books - authors, students - teachers, posts - tags.
