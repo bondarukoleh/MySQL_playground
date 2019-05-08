@@ -272,7 +272,7 @@ CREATE TABLE product ( --doing as it says
   maker_id INT,
   model VARCHAR(50) NOT NULL,
   type VARCHAR(50) NOT NULL,
-  CONSTRAINT pk_product PRIMARY KEY(model), --constaraint, prohibition to pk_product to be unic as far as I got
+  CONSTRAINT pk_product PRIMARY KEY(model), --CONSTRAINT, prohibition to pk_product to be unic as far as I got
   CONSTRAINT fk_product_makers FOREIGN KEY(maker_id) REFERENCES makers(maker_id) --referenes - fk_product_makers
   --will be referensed to makers table - makers_id
 );
