@@ -49,3 +49,4 @@ create table table_name(
 
 MANY TO MANY
 So you got it, books - authors, students - teachers, posts - tags.
+
