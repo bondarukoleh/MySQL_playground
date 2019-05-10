@@ -68,5 +68,25 @@ select series.title, reviews.rating from series join reviews on series.id=review
 select title, rating from series, reviews where series.id=reviews.series_id;
 select substring(convert(avg(reviews.rating), Char), 1, 4) as 'Rating',
  series.title from reviews join series on series.id=reviews.series_id group by series.id order by reviews.rating desc;
+ 
+select ROUND(avg(reviews.rating), 1) as 'Rating',
+ series.title from reviews join series on series.id=reviews.series_id group by series.id order by reviews.rating desc; 
 select reviewers.f_name, reviewers.l_name, substring(convert(avg(reviews.rating), char), 1, 4) from reviewers join reviews on reviewers.id=reviews.reviewer_id
 group by reviewers.id order by reviews.rating desc;
+select series.title as 'Unreviewed' from series left join reviews on series.id=reviews.series_id where reviews.rating is null;
+select series.genre, round(avg(reviews.rating), 2) as 'AVG rating' from series join reviews on series.id=reviews.series_id group by series.genre;
+select reviewers.f_name, reviewers.l_name, count(reviews.reviewer_id) as 'COUNT',
+ ifnull(min(reviews.rating), 0) as MIN,
+ ifnull(max(reviews.rating), 0) as MAX,
+ ifnull(round(avg(reviews.rating), 2), 0) as AVG,
+ if(avg(reviews.rating) > 0, 'ACTIVE', 'INACTIVE') as STATUS,
+ -- SAME AS
+ case 
+	when avg(reviews.rating) > 0 then 'ACTIVE'
+    else 'INACTIVE'
+    end as 'STATUS'
+ from reviewers left join reviews on reviewers.id=reviews.reviewer_id group by reviewers.id;
+ 
+ select series.title, round(avg(reviews.rating), 2) as AVG_RATING, concat(reviewers.f_name, ' ', reviewers.l_name) as 'Reviewer' from
+  series join reviews on series.id=reviews.series_id
+  join reviewers on reviewers.id=reviews.series_id group by reviewers.id;

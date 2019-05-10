@@ -126,3 +126,7 @@ ALTER table cats add column changed_at timestamp default now() on update current
 Make created and changed columns in table. 
 current_timestamp = now(), just another shortcut.
 
+ROUND
+ROUND(value_needed_to_round, how_many_digits_after_coma)
+select ROUND(AVG(column_name), 2) from table_name;
+

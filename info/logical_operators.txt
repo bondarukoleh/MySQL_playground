@@ -47,6 +47,10 @@ SELECT * FROM table_name WHERE column_name IN (1, 2, 3)
 NOT IN
 SELECT * FROM table_name WHERE column_name NOT IN (1, 2, 3)
 
+IF satement
+IF(condition, true_value, false_value)
+select IF(column_name > 0, 'Positive value', 'Negative value');
+
 CASE steatements.
 We can deside what to do with date.
 SELECT title, released_year,
@@ -66,3 +70,5 @@ SELECT title, stock_quantity,
 FROM books; 
 
 If we comparing something with null -> returns null. i.e. NULL > 1 -> returns not 1 or 0, returns NULL.
+ 
+If we need to compare equality with null - we need "colunm_mane IS NULL". Not "= null"
