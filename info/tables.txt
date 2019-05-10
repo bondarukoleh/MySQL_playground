@@ -88,3 +88,17 @@ To not set cat_id each time manualy, we cat set AUTO_INCREMENT to it.
 create table unic_cats(cat_id int not null auto_increment primary key, name varchar(15) not null default 'unnamed',
  age int not null default 0);
 sic! primary key - not in the end like primary key(cat_id), but after cat_id in columns section of the query.
+
+UNIQUE
+We can make come column value unique, that means it cannot be duplicated. Sort like PRIMARY KEY, but if it will be
+massive user name -> so search it will be more complex and slower.
+create table table_name(colunm_name VARCHAR(100) UNIQUE);
+
+PRIMARY KEY unique combination.
+If you need to set some unique combination of clumn values - we can set it via PRIMARY KEY
+create table table_name(
+  colunm_name1 VARCHAR(100),
+  colunm_name2 VARCHAR(100),
+  PRIMARY KEY(colunm_name1, colunm_name2)
+);  -> we won't have ability to these two values be duplicated. It means two rows with same colunm_name1, colunm_name2
+values cannot be added.
