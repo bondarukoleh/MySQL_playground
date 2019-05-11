@@ -321,9 +321,13 @@ select count(distinct author_lname, author_fname) from books; -> count all autho
 select count(title) from books where title like '%The%';
 
 GROUP BY
+GROUP BY clause works on the rows returned by query or WHERE clause. This clause summaries identical rows
+into a single/distinct group and returns a single row with the summary for each group, by using appropriate
+Aggregate function in the SELECT list, like COUNT(), SUM(), MIN(), MAX(), AVG(), etc.
 Summarizes or aggregates identical data into single rows.
 select title, author_lname from books group by author_lname; -> when group by finds similar author_lname it groups it 
 in one row.
+Must be after WHERE.
 SELECT title, author_lname FROM books;
 +----------------------------------+--------------+
 | title                            | author_lname |
@@ -352,6 +356,23 @@ select author_lname, author_fname, count(titles) as 'Books has written' FROM boo
 
 select author_lname, author_fname,released_year, count(title) as 'Books were released'
 FROM books GROUP BY 3 order by 4 desc; -> how many books where released by year.
+
+ORDER BY
+Sorting. Also you can not only pass numbers of arguments in query;
+Select c_n1, c_n2 from t_n1 order by c_n1/1;
+We can pass alias we set, and want to order by.
+Select avg(c_n1) as Average, c_n2 from t_n1 order by Average;
+
+HAVING
+HAVING clause works as a Filter on top of the Grouped rows returned by GROUP BY.
+This clause cannot be replaced by a WHERE clause and vice-versa.
+We can use after group by to select some specific data after grouping. When WHERE cannot help - we can use HAVING
+select users.username, count(user_id) as 'num_likes' from likes
+ join users
+  on likes.user_id=users.id
+GROUP BY user_id
+HAVING num_likes=257; -> filters group by info.
+
 
 MIN and MAX.
 Find minimun and maximum value

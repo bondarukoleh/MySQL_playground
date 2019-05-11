@@ -4,13 +4,15 @@ SELECT
 Select expression - more complex query.
 mysql$>select column_name1, column_name2 from table_name; - return only queried columns. Order of column is matter.
 
-where
+WHERE
+WHERE clause specifies search conditions for the rows returned by the Query and limits rows to a meaningful set.
 More specific selection. can be used with update, and delete.
 mysql$>select * from table_name where column_name1 condition1 and condition2;
 mysql$>select column_name1, column_name2 from table_name where column_name1 condition1 and condition2;
 
 mysql$>select age, name from unic_cats where age=4 and name = 'Egg'; (or 'egg/EGG') -> by default case not matter
 mysql$>select age, name from unic_cats where age=cat_id; (sql got that I want from unic_cats)
+must be before group by.
 
 alias
 Selecting data and renaming column names to their to be more readable to you.
