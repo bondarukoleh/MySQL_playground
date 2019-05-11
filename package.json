@@ -1,0 +1,26 @@
+{
+  "name": "node_mysql_app",
+  "version": "1.0.0",
+  "description": "Simple web app with mysql triggers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bondarukoleh/mysql_playground.git"
+  },
+  "author": "Oleh Bondaruk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bondarukoleh/mysql_playground/issues"
+  },
+  "homepage": "https://github.com/bondarukoleh/mysql_playground#readme",
+  "dependencies": {
+    "faker": "^4.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0"
+  }
+}
