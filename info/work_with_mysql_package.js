@@ -6,8 +6,8 @@ console.log(faker.date.past());
 
 const connection = mysql.createConnection({
     host: 'localhost',
-    user: 'root',
-    password: '1234',
+    user: '', // TODO: insert your user
+    password: '', // TODO: insert your password
     database: 'join_us'
 })
 
