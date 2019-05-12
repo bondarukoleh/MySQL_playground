@@ -65,6 +65,11 @@ insert into table_name(column_name1, column_name2) values(value_for_column1, val
 insert into table_name(column_name1, column_name2)
  values(value1_for_column1, value1_for_2)
         ,(value2_for_column1, value2_for_2); - we can set a few rows at once.
+Or
+we can use mysql pakcage
+const data_to_insert = {column_name1: 'value1', column_name2: 'value2'};
+connqction.query(`INSERT INTO table_name SET ?;`, data_to_insert, (err, result) => console.log(result));
+and instead "?" there will appear data_to_insert object.
 
 If you typed a insert into a(c1, c2) values(1) - even if c2 column has default value - you'll get an error.
 

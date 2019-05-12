@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/bondarukoleh/mysql_playground#readme",
   "dependencies": {
-    "faker": "^4.1.0"
+    "faker": "^4.1.0",
+    "mysql": "^2.17.1"
   },
   "devDependencies": {
     "eslint": "^5.16.0"
