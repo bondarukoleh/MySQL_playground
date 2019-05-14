@@ -10,8 +10,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/styles'))
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: 'root', // TODO: insert your user
-  password: '1234', // TODO: insert your password
+  user: '', // TODO: insert your user
+  password: '', // TODO: insert your password
   database: 'join_us'
 })
 const port = 4000;
