@@ -28,7 +28,7 @@ const insertRandomEmailQuery = () => `
 insert into emails(email, created_at) values('${faker.internet.email()}', '2019-03-03 12:00:00');`;
 makeQuery(insertRandomEmailQuery());
 
-// totaly mysql package stuff
+// totally mysql package stuff
 const getRandomEmailObject = () => ({email: faker.internet.email(), created_at: faker.date.past()});
 const getRandomEmailArray = () => [faker.internet.email(), faker.date.past()];
 makeQuery(`INSERT INTO emails SET ?`, getRandomEmailObject())

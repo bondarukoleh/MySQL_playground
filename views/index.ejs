@@ -1,0 +1,18 @@
+<h1>Join Us</h1>
+
+<p class="enterEmail">Join our community. We have <strong><%=userEmails%></strong> users in here!</p>
+
+<form action="/insert_user" method="post" target="/">
+  <input class="enterEmailInput" type="text" id="userEmailValue" name="userEmail" placeholder="Type your email...">
+  <!-- <input type="submit" value="Send" id="sendUserEmail"> same as below. Last button is a submit one-->
+  <button id="sendUserEmail">Join</button> 
+</form>
+
+<script>
+  const button = document.querySelector('#sendUserEmail')
+  const input = document.querySelector('#userEmail')
+  button.addEventListener("click", function () {
+    console.log(input.value);
+  })
+
+</script>
