@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const mysql = require('mysql');
-const path = require('path');
+const os = require('os');
 const bodyParser = require('body-parser');
 
 app.set('view engine', 'ejs');
@@ -20,20 +20,28 @@ const insertEmailQuery = `INSERT INTO emails SET ?;`
 
 
 app.get('/', function (req, res) {
-  connection.query(emailsCountQuery, (err, result, fields) => {
-    if (err) { console.log('Error!!!', err); return err; }
-    const [{ emails_count }] = result;
-    /* res.sendFile(path.resolve(__dirname, './pages/index.html')) same as */
-    res.render('index', { userEmails: emails_count }) // by default looking in "views" directory, and file home.ejs, because app.set('view engine', 'ejs')
-  })
+  if(os.platform() === 'win32'){
+    res.render('index', { userEmails: 500 })
+  } else {
+    connection.query(emailsCountQuery, (err, result, fields) => {
+      if (err) { console.log('Error!!!', err); return err; }
+      const [{ emails_count }] = result;
+      /* res.sendFile(path.resolve(__dirname, './pages/index.html')) same as */
+      res.render('index', { userEmails: emails_count }) // by default looking in "views" directory, and file home.ejs, because app.set('view engine', 'ejs')
+    })
+  }
 });
 
 app.post('/insert_user', (request, response) => {
-  const { body: { userEmail } } = request;
-  connection.query(insertEmailQuery, { email: userEmail }, (err, result, fields) => {
-    if (err) { console.log('Error!!!', err); return err; }
+  if(os.platform() === 'win32') {
     response.redirect('/')
-  })
+  } else {
+    const { body: { userEmail } } = request;
+    connection.query(insertEmailQuery, { email: userEmail }, (err, result, fields) => {
+      if (err) { console.log('Error!!!', err); return err; }
+      response.redirect('/')
+    })
+  }
 })
 
 app.listen(port, () => console.log(`App is up and running on ${port} port`))
