@@ -15,9 +15,9 @@ body {
   height: 100%;
 }
 
-h1{
+h1 {
   margin: 0;
-  font-size: 300px;
+  font-size: 400px;
   line-height: 400px;
   font-weight: 100;
 }
@@ -27,7 +27,7 @@ p {
   font-size: 50px;
 }
 
-form {
+.form {
   line-height: 1.5;
   border: none;
   border-bottom: 3px solid #ebebeb;
@@ -42,7 +42,7 @@ form {
 button {
   line-height: 2.0;
   border:3px solid white;
-  font-size: 0.5em;
+  font-size: 1.9em;
   color: rgb(66,69,86);
   padding: 5px 30px;
   background: rgba(255,255,255,1.0);
@@ -51,9 +51,9 @@ button {
 }
 
 input[type=text]:focus {
-  outline: none;
+outline: none;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: rgba(255,255,255,0.8);
+color: rgba(255,255,255,0.8);
 }

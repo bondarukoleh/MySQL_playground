@@ -6,14 +6,10 @@
   <div class=flex-container>
     <div class="container">
       <h1>Join Us</h1>
-      <p class="enterEmail">Join our community. We have <strong><%=userEmails%></strong> users in here!</p>
-      <form action="/insert_user" class="lead" method="post" target="/">
-        <input class="enterEmailInput" type="text" id="userEmailValue" name="email"  class="form"
-          placeholder="Type your email...">
-        <input type="hidden" name="a" placeholder="asdasdasd">
-        <!-- <input type="submit" value="Send" id="sendUserEmail"> same as below. Last button is a submit one-->
+      <p class="lead">Join our community. We have <strong><%=userEmails%></strong> users in here!</p>
+      <form action="/insert_user" method="post" target="/">
+        <input type="text" id="userEmailValue" name="email" class="form"  placeholder="Type your email...">
         <button id="sendUserEmail">Join</button>
       </form>
     </div>
   </div>
-</body>
