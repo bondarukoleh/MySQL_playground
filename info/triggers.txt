@@ -1,0 +1,2 @@
+Triggers
+Sql statements that are automatically run when a specific table is changed

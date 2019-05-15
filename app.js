@@ -10,8 +10,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/styles'))
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: '', // TODO: insert your user
-  password: '', // TODO: insert your password
+  user: 'root', // TODO: insert your user
+  password: '1234', // TODO: insert your password
   database: 'join_us'
 })
 const port = 4000;
@@ -36,7 +36,8 @@ app.post('/insert_user', (request, response) => {
   if(os.platform() === 'win32') {
     response.redirect('/')
   } else {
-    const { body: { userEmail } } = request;
+    console.log(request.body);
+    const { body: { email: userEmail } } = request;
     connection.query(insertEmailQuery, { email: userEmail }, (err, result, fields) => {
       if (err) { console.log('Error!!!', err); throw err; }
       response.redirect('/')
