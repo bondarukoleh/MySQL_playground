@@ -24,7 +24,7 @@ app.get('/', function (req, res) {
     res.render('index', { userEmails: 500 })
   } else {
     connection.query(emailsCountQuery, (err, result, fields) => {
-      if (err) { console.log('Error!!!', err); return err; }
+      if (err) { console.log('Error!!!', err); throw err; }
       const [{ emails_count }] = result;
       /* res.sendFile(path.resolve(__dirname, './pages/index.html')) same as */
       res.render('index', { userEmails: emails_count }) // by default looking in "views" directory, and file home.ejs, because app.set('view engine', 'ejs')
@@ -38,7 +38,7 @@ app.post('/insert_user', (request, response) => {
   } else {
     const { body: { userEmail } } = request;
     connection.query(insertEmailQuery, { email: userEmail }, (err, result, fields) => {
-      if (err) { console.log('Error!!!', err); return err; }
+      if (err) { console.log('Error!!!', err); throw err; }
       response.redirect('/')
     })
   }
