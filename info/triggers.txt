@@ -1,2 +1,36 @@
 Triggers
-Sql statements that are automatically run when a specific table is changed
+Sql statements that are automatically run when a specific table is changed? or some event happened.
+BUT REMEMBER, function, triggers, checks - are not to be stored in database, these stuff - is totally 
+ui or server side. Triggers make debug more complex.
+
+CREATE TRIGGER trigger_name trigger_time trigger_event ON table_name FOR EACH ROW
+BEGIN
+...
+END;
+
+trigger_time: BEFORE, AFTER. For example you want to run something before INSERT, or after some row deleted.
+trigger_event: INSERT, UPDATE, DELETE. Only three events that can run trigger.
+
+DELIMITER $$ (";" is a standard delimiter for sql, we re-set it to $$, because we have multi-line statement to execute)
+CREATE TRIGGER no_older_20_cat (name is optional - it's only for you)
+  BEFORE INSERT ON cats FOR EACH ROW
+  BEGIN
+    IF NEW.age > 20 (NEW - the entity that is inserting in table, in this case some uniq_cat)
+    THEN 
+      SIGNAL SQLSTATE '45000' (45000 is a wildcard for 1644 code, "Unhandled user-defined exception condition")
+        SET MESSAGE_TEXT = "Cat cannot be more then 20 years old."; (Error message)
+    END IF;
+  END;
+$$
+DELIMITER ; (re-set standard ";" delimiter back)
+
+There a few types of codes:
+  A numeric error code (1146). This is number is MySQL-specific. Provided by MySQL.
+  A 5-characters SQLSATE value ('42S02') - is standard SQL codes not MySQL.
+
+23:18:03  select non_existing_column from unic_cats LIMIT 0, 1000
+ERROR 1054 (42S22): Unknown column 'non_existing_column' in 'field list' -> you can see mysql 1054,
+ and sql 42S22 error codes.
+
+SHOW TRIGGERS;
+DELETE TRIGGER trigger_name;
