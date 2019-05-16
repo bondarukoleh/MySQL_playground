@@ -91,3 +91,7 @@ select count(title) as 'Number of books', author_lname FROM books GROUP BY autho
 select count(title) from books where author_lname='Gaiman' or author_lname='Eggers';
 select author_lname, author_fname,released_year, count(title) as 'Books were released' FROM books GROUP BY 3 order by 4 desc;
 select CONCAT('In ', released_year,' ',count(*),' - book(s) were released') as 'Book releases' FROM books GROUP BY released_year order by count(title) desc;
+select title, concat(author_fname, ' ', author_lname) as 'Author' from books where Char_length(title)=(select max(Char_length(title)) from books);
+select title, concat(author_fname, ' ', author_lname) as 'Author' from books order by 1 desc limit 1;
+SELECT title AS 'Title', CONCAT(author_fname, ' ', author_lname) AS 'Author' FROM books ORDER BY CHAR_LENGTH(title) DESC LIMIT 1;
+SELECT title AS 'Title', CONCAT(author_fname, ' ', author_lname) AS 'Author', pages FROM books ORDER BY 3 DESC LIMIT 1;
