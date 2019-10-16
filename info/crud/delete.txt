@@ -7,4 +7,4 @@ DELETE FROM unic_cats WHERE name='Egg';
 Also it's nice to type SELECT instead of DELETE to see what you're going to delete.
 There is no undo button.
 
-delete from table_name; - will delete all data from table, be carefull.
+delete from table_name; - will delete all data from table, be careful.

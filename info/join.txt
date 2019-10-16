@@ -9,22 +9,22 @@ One to many relationship - most common thing, when one entity has connection to 
   only with this one entity. for example - book and views. book has connection to 1000 views, 1000 views has connection 
   for one book. Customer and orders.
 Many to many relationship - Books and authors. Book may have many authors, and authors can have many books. So 1 book 
-  can belond to many authors, same as one author can belong to many book.
+  can belong to many authors, same as one author can belong to many book.
 
 For better readability we should keep our data separate by logic. Customer info in customer table, and order info in order
 table for example.
 
-PRIMARY KEY - is always unic! Unic identifier that represents the data identifier.
-FOREIGN KEY - is reference to anither table from current one. That means we referencing to another PRIMARY KEY from
+PRIMARY KEY - is always uniq! Uniq identifier that represents the data identifier.
+FOREIGN KEY - is reference to another table from current one. That means we referencing to another PRIMARY KEY from
   current table.
 
-So we can set FOREIGN KEY only in separate line, and syntaxes is:
+So we can set FOREIGN KEY only in separate line, and syntax is:
   FOREIGN KEY(column_name_from_current_table) REFERENCES table_we_want_to_reference(column_from_table_we_want_to_reference)
 
 JOIN
 Cross join - when we will do next:
-SELECT * FROM customers, orders; -> it will take each row in customers and stick it to each row of orders, same as multiply
-  them, useless stuff, but explane a little bit of logic how sql running stuff.
+SELECT * FROM customers, orders; -> it will take each row in customers and stick it to each row of orders, same as
+multiply them, useless stuff, but explain a little bit of logic how sql running stuff.
 
 Implicit inner join:
 SELECT f_name, good FROM orders, customers WHERE orders.customer_id=customers.id; -> another dump way to join.
@@ -33,7 +33,7 @@ Explicit inner join
 SELECT * from customers join orders on customers.id=order.customer_id;
 Order affects the representation data, but not logic of representation.
 
-LEFT/RIGHT - you remember, get's everything from left or right table.
+LEFT/RIGHT - you recall it, get's everything from left or right table.
 Use of these - it's for example we want to know who didn't buy nothing.
 SELECT customers.f_name, IFNULL(SUM(amount), 0) FROM orders RIGHT JOIN customers ON orders.customer_id = customers.id
 GROUP BY customers.id; -> IFNULL, has two arguments, value that we want to check, and value to print if it null.

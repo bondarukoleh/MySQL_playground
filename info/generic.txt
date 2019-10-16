@@ -1,15 +1,15 @@
 GENERIC
 
-Database - collection of data, structured set of computerizad data with an accessible interface.
+Database - collection of data, structured set of computerized data with an accessible interface.
 Database Management System, DMS, Related DMS - interface for Database.
 Your app <-> DMS <-> Database
-Related databases PostreSQL, Oracle Database, MySQL, SQLite - technicaly they are not Databases, they are DMS',
+Related databases PostreSQL, Oracle Database, MySQL, SQLite - technically they are not Databases, they are DMS',
 and they ALL using SQL language for their queries (because they are related)
 
 MySQL vs SQL
 SQL "structured query language"
 SQL - is language, language that we're using to "talk" to our databases, every our "question" - is a query.
-So SQL is a standart that all DMS implement. So there a slight differences in implementation of SQL in 
+So SQL is a standard that all DMS implement. So there a slight differences in implementation of SQL in
 different DMS, but still they're using SQL.
 
 SQL is the standard language for Relational Database System. All the Relational Database Management Systems (RDMS)
@@ -36,12 +36,12 @@ NoSQL (MongoDB, CouchDB, Cassandra, HBase)
 No-relational db, on the other hand more agile and extendable, with different type of data that they store, NoSQL dbs has no restriction
 about the type of stored data.
 In front of relational dbs, nosql - can add new data types while working, and cloud storage and computing power of cloud, 
-So cloud storage can be used by few servers simultaniously.
-Much more easy to use that relational, doesn't need to be setuped so long.
+So cloud storage can be used by few servers simultaneously.
+Much more easy to use that relational, doesn't need to be setup so long.
 
 So db selection depends on aim amd condition of project.
 If we have stable, clear requirements, we need checked mature technology, and data consistency, solidness - SQL
-No clear requiraments, speed of development, aim of project will be chosen while development is on - nosql.
+No clear requirements, speed of development, aim of project will be chosen while development is on - nosql.
 
 Npm modules - knex, mysql.
 

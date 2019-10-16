@@ -1,9 +1,6 @@
 const faker = require('faker');
 const mysql = require('mysql');
 
-console.log(faker.internet.email());
-console.log(faker.date.past());
-
 const connection = mysql.createConnection({
     host: 'localhost',
     user: '', // TODO: insert your user

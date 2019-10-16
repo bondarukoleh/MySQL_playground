@@ -6,4 +6,4 @@ insert into table_name(column_name1, column_name2)
 
 If you typed a insert into a(c1, c2) values(1) - even if c2 column has default value - you'll get an error.
 
-strings inserted only inquotes ""|''. column names order matters.
+strings inserted only in quotes ""|''. column names order matters.
